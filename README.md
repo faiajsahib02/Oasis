@@ -218,7 +218,7 @@ Oasis is a modern hotel management system designed to streamline hotel operation
 ## 📁 Project Structure
 
 ```
-ocean-paradise/
+Oasis/
 ├── Backend/
 │   ├── cmd/                    # CLI commands
 │   ├── config/                 # Configuration management
