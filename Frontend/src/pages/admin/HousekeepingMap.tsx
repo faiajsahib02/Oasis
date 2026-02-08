@@ -89,7 +89,7 @@ const HousekeepingMap = () => {
       };
 
       socket.onclose = () => setTimeout(connectWebSocket, 3000);
-      socket.onerror = (err) => socket.close();
+      socket.onerror = () => socket.close();
     };
 
     connectWebSocket();

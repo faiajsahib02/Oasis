@@ -9,18 +9,17 @@ import {
   Bath, 
   Droplets, 
   Coffee, 
-  Pill, 
-  Wrench, 
   CheckCircle, 
   AlertCircle,
   Minus,
-  Plus
+  Plus,
+  ChevronRight
 } from 'lucide-react';
 
 const AMENITIES = [
   { id: 'TOWEL', name: 'Towels', icon: Bath },
   { id: 'SHAMPOO', name: 'Shampoo', icon: Droplets },
-  { id: 'WATER', name: 'Water', icon: Droplets }, // Using Droplets as placeholder if no Water icon
+  { id: 'WATER', name: 'Water', icon: Droplets },
   { id: 'PILLOW', name: 'Pillows', icon: BedDouble },
   { id: 'COFFEE', name: 'Coffee', icon: Coffee },
 ];
@@ -44,20 +43,15 @@ const HousekeepingPage = () => {
   const handleStatusChange = async (status: 'REQUESTED_CLEANING' | 'DND') => {
     if (!user?.room_number) return;
     
-    // Toggle logic: if clicking the same status, revert to CLEAN (or just keep it?)
-    // Let's assume clicking "Make Up Room" sets it to REQUESTED_CLEANING.
-    // If it's already REQUESTED_CLEANING, maybe we don't do anything or revert.
-    // For now, direct set.
-    
     const newStatus = status === roomStatus ? 'CLEAN' : status;
-    setRoomStatus(newStatus); // Optimistic update
+    setRoomStatus(newStatus);
 
     try {
       await requestCleaning(user.room_number, newStatus);
-      showNotification('success', `Room status updated to ${newStatus.replace('_', ' ')}`);
+      showNotification('success', `Room status updated`);
     } catch (err) {
       console.error(err);
-      setRoomStatus(roomStatus); // Revert
+      setRoomStatus(roomStatus);
       showNotification('error', 'Failed to update room status');
     }
   };
@@ -77,13 +71,12 @@ const HousekeepingPage = () => {
 
     setLoading(true);
     try {
-      // Send requests in parallel
       await Promise.all(itemsToRequest.map(([item, qty]) => 
         requestAmenity(user.id, user.room_number!, item, qty)
       ));
       
       setAmenityCounts({});
-      showNotification('success', 'Housekeeping notified of your request');
+      showNotification('success', 'Request sent to housekeeping');
     } catch (err) {
       console.error(err);
       showNotification('error', 'Failed to request amenities');
@@ -110,7 +103,7 @@ const HousekeepingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-20">
+    <div className="min-h-screen bg-white pb-20">
       {/* Notification Toast */}
       {notification && (
         <motion.div 
@@ -118,7 +111,7 @@ const HousekeepingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg flex items-center ${
-            notification.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+            notification.type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'
           }`}
         >
           {notification.type === 'success' ? <CheckCircle className="h-5 w-5 mr-2" /> : <AlertCircle className="h-5 w-5 mr-2" />}
@@ -126,120 +119,149 @@ const HousekeepingPage = () => {
         </motion.div>
       )}
 
-      {/* Section A: Room Status (Hero) */}
-      <div className="bg-white shadow-sm border-b border-slate-200">
+      {/* Header */}
+      <div className="border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h1 className="text-2xl font-serif font-bold text-slate-900 mb-6">Housekeeping Control</h1>
+          <p className="text-sm tracking-widest text-slate-500 uppercase">Room Control</p>
+          <h1 className="text-4xl font-bold text-slate-900 mt-2">Housekeeping</h1>
+        </div>
+      </div>
+
+      {/* Hero Image */}
+      <div className="w-full h-64 md:h-80 overflow-hidden bg-slate-100">
+        <img 
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+          alt="Housekeeping" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        {/* Section A: Room Status */}
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <p className="text-xs tracking-widest text-slate-500 uppercase mb-6 font-semibold">Room Status</p>
           
           <div className="grid md:grid-cols-2 gap-6">
             {/* Status Indicator */}
-            <div className={`p-6 rounded-xl border-2 flex items-center justify-between transition-colors ${
+            <div className={`p-6 rounded-lg border transition-all ${
               roomStatus === 'DND' 
-                ? 'bg-red-50 border-red-200' 
+                ? 'bg-slate-900 border-slate-900 text-white' 
                 : roomStatus === 'REQUESTED_CLEANING'
-                  ? 'bg-green-50 border-green-200'
-                  : 'bg-slate-50 border-slate-200'
+                  ? 'bg-slate-100 border-slate-300'
+                  : 'bg-white border-slate-200'
             }`}>
-              <div>
-                <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">Current Status</p>
-                <h2 className={`text-2xl font-bold mt-1 ${
-                  roomStatus === 'DND' ? 'text-red-700' : roomStatus === 'REQUESTED_CLEANING' ? 'text-green-700' : 'text-slate-700'
-                }`}>
-                  {roomStatus === 'DND' ? 'Do Not Disturb' : roomStatus === 'REQUESTED_CLEANING' ? 'Cleaning Requested' : 'Standard Service'}
-                </h2>
-              </div>
-              <div className={`p-3 rounded-full ${
-                roomStatus === 'DND' ? 'bg-red-100 text-red-600' : roomStatus === 'REQUESTED_CLEANING' ? 'bg-green-100 text-green-600' : 'bg-slate-200 text-slate-500'
-              }`}>
-                {roomStatus === 'DND' ? <Moon className="h-8 w-8" /> : <Sun className="h-8 w-8" />}
-              </div>
+              <p className={`text-xs tracking-widest uppercase mb-2 font-semibold ${roomStatus === 'DND' ? 'text-slate-300' : 'text-slate-500'}`}>
+                Current
+              </p>
+              <h2 className="text-2xl font-bold">
+                {roomStatus === 'DND' ? 'Do Not Disturb' : roomStatus === 'REQUESTED_CLEANING' ? 'Cleaning In Progress' : 'Ready to Serve'}
+              </h2>
             </div>
 
             {/* Toggles */}
             <div className="grid grid-cols-2 gap-4">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => handleStatusChange('REQUESTED_CLEANING')}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all ${
+                className={`p-6 rounded-lg border transition-all text-center ${
                   roomStatus === 'REQUESTED_CLEANING'
-                    ? 'border-green-500 bg-green-50 text-green-700'
-                    : 'border-slate-200 hover:border-green-300 hover:bg-green-50 text-slate-600'
+                    ? 'border-slate-900 bg-slate-50'
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <Sun className="h-8 w-8 mb-2" />
-                <span className="font-medium">Make Up Room</span>
-              </button>
+                <Sun className="h-6 w-6 mx-auto mb-2 text-slate-400" />
+                <span className="font-bold text-sm">Make Up Room</span>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => handleStatusChange('DND')}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all ${
+                className={`p-6 rounded-lg border transition-all text-center ${
                   roomStatus === 'DND'
-                    ? 'border-red-500 bg-red-50 text-red-700'
-                    : 'border-slate-200 hover:border-red-300 hover:bg-red-50 text-slate-600'
+                    ? 'border-slate-900 bg-slate-900 text-white'
+                    : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <Moon className="h-8 w-8 mb-2" />
-                <span className="font-medium">Do Not Disturb</span>
-              </button>
+                <Moon className="h-6 w-6 mx-auto mb-2" />
+                <span className="font-bold text-sm">Do Not Disturb</span>
+              </motion.button>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Divider */}
+        <div className="h-px bg-slate-100"></div>
+
         {/* Section B: Amenities Request */}
-        <section>
-          <h2 className="text-xl font-bold text-slate-900 mb-4">Need something extra?</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          <p className="text-xs tracking-widest text-slate-500 uppercase mb-6 font-semibold">Request Amenities</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
             {AMENITIES.map((item) => (
-              <div key={item.id} className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center text-center">
-                <div className="p-3 bg-blue-50 text-blue-600 rounded-full mb-3">
-                  <item.icon className="h-6 w-6" />
+              <div key={item.id} className="p-4 bg-white rounded-lg border border-slate-200 hover:border-slate-300 transition-colors">
+                <div className="flex justify-center mb-3">
+                  <item.icon className="h-6 w-6 text-slate-400" />
                 </div>
-                <h3 className="font-medium text-slate-900 mb-3">{item.name}</h3>
-                <div className="flex items-center space-x-3">
-                  <button 
+                <h3 className="font-bold text-slate-900 text-sm text-center mb-3">{item.name}</h3>
+                <div className="flex items-center justify-center space-x-2">
+                  <motion.button 
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => updateAmenityCount(item.id, -1)}
-                    className="p-1 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600"
+                    className="p-1 rounded hover:bg-slate-100 text-slate-300 hover:text-slate-600"
                   >
                     <Minus className="h-4 w-4" />
-                  </button>
-                  <span className="font-semibold w-4">{amenityCounts[item.id] || 0}</span>
-                  <button 
+                  </motion.button>
+                  <span className="font-bold w-4 text-center text-sm">{amenityCounts[item.id] || 0}</span>
+                  <motion.button 
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => updateAmenityCount(item.id, 1)}
-                    className="p-1 rounded-full hover:bg-blue-50 text-blue-500 hover:text-blue-700"
+                    className="p-1 rounded hover:bg-slate-100 text-slate-300 hover:text-slate-600"
                   >
                     <Plus className="h-4 w-4" />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             ))}
           </div>
-          <div className="mt-6 flex justify-end">
-            <button
+          <div className="flex justify-end">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={handleRequestAmenities}
               disabled={loading || Object.values(amenityCounts).every(v => v === 0)}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-6 py-2 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
             >
-              {loading ? 'Sending...' : 'Request Items'}
-            </button>
+              Send Request <ChevronRight className="h-4 w-4 ml-2" />
+            </motion.button>
           </div>
-        </section>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="h-px bg-slate-100"></div>
 
         {/* Section C: Report an Issue */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200 bg-slate-50">
-            <h2 className="text-lg font-bold text-slate-900 flex items-center">
-              <Wrench className="h-5 w-5 mr-2 text-slate-500" />
-              Maintenance Request
-            </h2>
-          </div>
-          <form onSubmit={handleSubmitTicket} className="p-6 space-y-4">
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+        >
+          <p className="text-xs tracking-widest text-slate-500 uppercase mb-6 font-semibold">Maintenance Request</p>
+          <form onSubmit={handleSubmitTicket} className="space-y-4 max-w-2xl">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Issue Type</label>
+              <label className="block text-sm font-bold text-slate-700 mb-2">Issue Type</label>
               <select
                 value={issueType}
                 onChange={(e) => setIssueType(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-1 focus:ring-slate-900 focus:border-slate-900 bg-white font-semibold"
               >
                 {ISSUE_TYPES.map(type => (
                   <option key={type} value={type}>{type}</option>
@@ -247,27 +269,29 @@ const HousekeepingPage = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+              <label className="block text-sm font-bold text-slate-700 mb-2">Description</label>
               <textarea
                 required
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Please describe the issue..."
+                placeholder="Describe the issue..."
                 rows={3}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:ring-1 focus:ring-slate-900 focus:border-slate-900 bg-white font-semibold"
               />
             </div>
-            <div className="flex justify-end">
-              <button
+            <div className="flex justify-end pt-2">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={loading || !description}
-                className="px-6 py-2 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 disabled:opacity-50 transition-colors"
+                className="px-6 py-2 bg-slate-900 text-white rounded-lg font-bold hover:bg-slate-800 disabled:opacity-50 transition-colors flex items-center"
               >
-                {loading ? 'Submitting...' : 'Submit Ticket'}
-              </button>
+                Submit <ChevronRight className="h-4 w-4 ml-2" />
+              </motion.button>
             </div>
           </form>
-        </section>
+        </motion.section>
       </div>
     </div>
   );

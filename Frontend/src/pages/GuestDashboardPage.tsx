@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { getGuest } from '../services/api';
 import { getToken, getUserFromToken } from '../utils/auth';
 import { Guest } from '../types';
-import { Wifi, Phone, Clock, Utensils, Shirt, Sparkles } from 'lucide-react';
+import { Wifi, Calendar, Utensils, Shirt, Sparkles, CreditCard, LogOut, ChevronRight, MapPin, Clock as ClockIcon } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const GuestDashboardPage = () => {
   const navigate = useNavigate();
@@ -40,126 +41,218 @@ const GuestDashboardPage = () => {
     fetchGuestDetails();
   }, [navigate]);
 
+  const formatDate = (dateString: string) => {
+    if (!dateString) return 'N/A';
+    return new Date(dateString).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  };
+
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-white">
+        <div className="animate-spin rounded-full h-8 w-8 border border-slate-200 border-t-slate-900"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
         <div className="text-red-600 mb-4">{error}</div>
-        <button onClick={() => navigate('/login')} className="text-amber-600 hover:underline">Back to Login</button>
+        <button onClick={() => navigate('/login')} className="text-slate-600 hover:text-slate-900 underline">Back to Login</button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 pb-12">
-      {/* Top Section */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-serif font-bold text-slate-800">
-            Good Evening, <span className="text-amber-600">{guest?.name}</span>
-          </h1>
-          <p className="text-slate-500 mt-1">Welcome to your personal guest portal.</p>
+    <div className="min-h-screen bg-white">
+      {/* Minimal Header */}
+      <div className="border-b border-slate-200 relative z-10 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex items-end justify-between">
+            <div>
+              <p className="text-sm tracking-widest text-slate-500 uppercase">Guest Portal</p>
+              <h1 className="text-4xl font-light text-slate-900 mt-2">{guest?.name}</h1>
+            </div>
+            <div className="text-right">
+              <p className="text-3xl font-light text-slate-400">Room {guest?.room_number}</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8">
-        
-        {/* Hero Card */}
-        <div className="relative rounded-xl overflow-hidden shadow-xl h-64 md:h-80 group">
-          <img 
-            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-            alt="Luxury Room" 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8">
-            <h2 className="text-white text-3xl md:text-4xl font-serif font-bold">Room {guest?.room_number}</h2>
-            <p className="text-amber-400 text-lg font-medium">Ocean View Suite</p> {/* Mocked Room Type */}
-          </div>
-        </div>
+      {/* Room Image Section */}
+      <div className="w-full h-64 md:h-80 overflow-hidden bg-slate-100">
+        <img 
+          src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" 
+          alt="Room" 
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-        {/* Quick Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4 border-l-4 border-amber-500">
-            <div className="bg-amber-50 p-3 rounded-full">
-              <Clock className="h-6 w-6 text-amber-600" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-500 font-medium">Check-out Time</p>
-              <p className="text-xl font-bold text-slate-800">11:00 AM</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-12"
+        >
+          {/* Stay Information Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <StayInfoBox 
+              label="Check-in"
+              value={formatDate(guest?.check_in_date || '')}
+              detail="2:00 PM"
+              icon={<Calendar className="w-5 h-5" />}
+            />
+            <StayInfoBox 
+              label="Check-out"
+              value={formatDate(guest?.check_out_date || '')}
+              detail="11:00 AM"
+              icon={<LogOut className="w-5 h-5" />}
+            />
+            <StayInfoBox 
+              label="Wi-Fi Network"
+              value="OceanGuest_Premium"
+              detail="Password: paradise2025"
+              icon={<Wifi className="w-5 h-5" />}
+            />
+          </div>
+
+          {/* Divider */}
+          <div className="h-px bg-slate-100"></div>
+
+          {/* Services Section */}
+          <div>
+            <p className="text-xs tracking-widest text-slate-500 uppercase mb-8">Services</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <MinimalServiceCard
+                icon={<Utensils className="w-6 h-6" />}
+                title="Dining"
+                onClick={() => navigate('/dining')}
+              />
+              <MinimalServiceCard
+                icon={<Shirt className="w-6 h-6" />}
+                title="Laundry"
+                onClick={() => navigate('/laundry')}
+              />
+              <MinimalServiceCard
+                icon={<Sparkles className="w-6 h-6" />}
+                title="Housekeeping"
+                onClick={() => navigate('/housekeeping')}
+              />
+              <MinimalServiceCard
+                icon={<CreditCard className="w-6 h-6" />}
+                title="Bill"
+                onClick={() => navigate('/bill')}
+              />
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4 border-l-4 border-amber-500">
-            <div className="bg-amber-50 p-3 rounded-full">
-              <Wifi className="h-6 w-6 text-amber-600" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-500 font-medium">Wifi Password</p>
-              <p className="text-xl font-bold text-slate-800">Guest_Secure</p>
-            </div>
-          </div>
+          {/* Divider */}
+          <div className="h-px bg-slate-100"></div>
 
-          <div className="bg-white p-6 rounded-xl shadow-lg flex items-center space-x-4 border-l-4 border-amber-500">
-            <div className="bg-amber-50 p-3 rounded-full">
-              <Phone className="h-6 w-6 text-amber-600" />
-            </div>
-            <div>
-              <p className="text-sm text-slate-500 font-medium">Front Desk</p>
-              <p className="text-xl font-bold text-slate-800">Dial 0</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Services Preview */}
-        <div>
-          <h3 className="text-2xl font-serif font-bold text-slate-800 mb-6">Guest Services</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            
-            <button 
-              onClick={() => navigate('/laundry')}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group text-left"
-            >
-              <div className="bg-slate-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors">
-                <Shirt className="h-6 w-6 text-slate-600 group-hover:text-white" />
+          {/* Amenities Highlight */}
+          <div>
+            <p className="text-xs tracking-widest text-slate-500 uppercase mb-8">Resort Amenities</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+              <div className="py-6">
+                <p className="text-2xl font-light text-slate-900">✓</p>
+                <p className="text-sm text-slate-600 mt-2">Ocean View</p>
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">Laundry</h4>
-              <p className="text-slate-500 text-sm">Same-day dry cleaning and pressing services.</p>
-            </button>
-
-            <button 
-              onClick={() => navigate('/dining')}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group text-left"
-            >
-              <div className="bg-slate-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors">
-                <Utensils className="h-6 w-6 text-slate-600 group-hover:text-white" />
+              <div className="py-6">
+                <p className="text-2xl font-light text-slate-900">✓</p>
+                <p className="text-sm text-slate-600 mt-2">Spa Access</p>
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">Room Service</h4>
-              <p className="text-slate-500 text-sm">24/7 dining delivered straight to your door.</p>
-            </button>
-
-            <button 
-              onClick={() => navigate('/housekeeping')}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 group text-left"
-            >
-              <div className="bg-slate-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors">
-                <Sparkles className="h-6 w-6 text-slate-600 group-hover:text-white" />
+              <div className="py-6">
+                <p className="text-2xl font-light text-slate-900">✓</p>
+                <p className="text-sm text-slate-600 mt-2">Concierge</p>
               </div>
-              <h4 className="text-lg font-bold text-slate-800 mb-2">Housekeeping</h4>
-              <p className="text-slate-500 text-sm">Request extra towels, toiletries, or cleaning.</p>
-            </button>
-
+              <div className="py-6">
+                <p className="text-2xl font-light text-slate-900">✓</p>
+                <p className="text-sm text-slate-600 mt-2">24/7 Service</p>
+              </div>
+            </div>
           </div>
-        </div>
 
+          {/* Contact Section */}
+          <div className="border-t border-slate-100 pt-12">
+            <p className="text-xs tracking-widest text-slate-500 uppercase mb-6">Need Assistance?</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex items-start space-x-4">
+                <MapPin className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-slate-900">Front Desk</p>
+                  <p className="text-sm text-slate-600">Dial 0 from your room</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <ClockIcon className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-slate-900">Hours</p>
+                  <p className="text-sm text-slate-600">24 hours • 7 days</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <Wifi className="w-5 h-5 text-slate-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-slate-900">Support</p>
+                  <p className="text-sm text-slate-600">Email: guest@ocean.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
+  );
+};
+
+interface StayInfoBoxProps {
+  label: string;
+  value: string;
+  detail: string;
+  icon: React.ReactNode;
+}
+
+const StayInfoBox = ({ label, value, detail, icon }: StayInfoBoxProps) => {
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center space-x-2 text-slate-400">
+        {icon}
+        <span className="text-xs tracking-widest uppercase">{label}</span>
+      </div>
+      <p className="text-2xl font-light text-slate-900">{value}</p>
+      <p className="text-sm text-slate-500">{detail}</p>
+    </div>
+  );
+};
+
+interface MinimalServiceCardProps {
+  icon: React.ReactNode;
+  title: string;
+  onClick: () => void;
+}
+
+const MinimalServiceCard = ({ icon, title, onClick }: MinimalServiceCardProps) => {
+  return (
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      className="group text-left p-6 border border-slate-200 hover:border-slate-900 transition-all duration-300 bg-white hover:bg-slate-50"
+    >
+      <div className="text-slate-400 group-hover:text-slate-900 transition-colors mb-3">
+        {icon}
+      </div>
+      <h3 className="font-light text-slate-900 group-hover:text-slate-700">{title}</h3>
+      <div className="mt-3 flex items-center text-slate-300 group-hover:text-slate-600 transition-colors">
+        <ChevronRight className="w-4 h-4" />
+      </div>
+    </motion.button>
   );
 };
 

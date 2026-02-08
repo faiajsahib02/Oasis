@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getInvoicePreview, InvoicePreview } from '../../services/api';
 import { Loader2, Download, Receipt } from 'lucide-react';
 

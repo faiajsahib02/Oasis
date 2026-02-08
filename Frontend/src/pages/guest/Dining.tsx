@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getRestaurantMenu, createRestaurantOrder, getGuestRestaurantOrders } from '../../services/api';
 import { CategoryWithItems, MenuItem, RestaurantOrder } from '../../types';
 import { useAuth } from '../../context/AuthContext';
@@ -20,7 +19,6 @@ const DiningPage = () => {
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   const { user } = useAuth();
-  const navigate = useNavigate();
   const categoryRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
   useEffect(() => {

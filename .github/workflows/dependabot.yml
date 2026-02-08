@@ -1,0 +1,22 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Enable Dependabot PR Auto-Merge
+      uses: dependabot/fetch-metadata@v1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}

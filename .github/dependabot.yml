@@ -1,0 +1,46 @@
+# Dependabot Configuration
+
+version: 2
+updates:
+  # Backend Go dependencies
+  - package-ecosystem: "gomod"
+    directory: "/Backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "yourusername"
+    labels:
+      - "dependencies"
+      - "go"
+    allow:
+      - dependency-type: "all"
+
+  # Frontend npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/Frontend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "yourusername"
+    labels:
+      - "dependencies"
+      - "npm"
+    allow:
+      - dependency-type: "all"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+    labels:
+      - "dependencies"
+      - "github-actions"
