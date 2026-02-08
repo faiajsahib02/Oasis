@@ -1,4 +1,4 @@
-# 🏨 Ocean Paradise - Hotel Management System
+# 🏨 Oasis – Distributed Hotel Operations Platform
 
 A comprehensive, full-stack hotel management system built with Go and React, featuring real-time updates, role-based access control, and complete hotel operations management.
 
