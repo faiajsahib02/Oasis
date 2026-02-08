@@ -30,7 +30,7 @@ A comprehensive, full-stack hotel management system built with Go and React, fea
 
 ## 🌟 Overview
 
-Ocean Paradise is a modern hotel management system designed to streamline hotel operations, from guest management and room bookings to housekeeping, laundry services, and restaurant operations. The system implements a clean architecture pattern with hexagonal design principles, ensuring maintainability and scalability.
+Oasis is a modern hotel management system designed to streamline hotel operations, from guest management and room bookings to housekeeping, laundry services, and restaurant operations. The system implements a clean architecture pattern with hexagonal design principles, ensuring maintainability and scalability.
 
 **Key Highlights:**
 - Real-time updates using WebSocket connections
