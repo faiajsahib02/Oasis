@@ -1,7 +1,7 @@
 package room
 
 import (
-	"ocean-paradise/backend/config"
+	"oasis/backend/config"
 )
 
 type Handler struct {

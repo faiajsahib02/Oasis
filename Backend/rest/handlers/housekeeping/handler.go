@@ -1,7 +1,7 @@
 package housekeeping
 
 import (
-	middleware "ocean-paradise/backend/rest/middlewares"
+	middleware "oasis/backend/rest/middlewares"
 )
 
 type Handler struct {
@@ -17,3 +17,4 @@ func NewHandler(middlewares *middleware.Middlewares, svc Service, hub WebSocketH
 		hub:         hub,
 	}
 }
+

@@ -43,3 +43,4 @@ type AddItemInput struct {
 type AddItemsPayload struct {
 	Items []AddItemInput `json:"items"`
 }
+

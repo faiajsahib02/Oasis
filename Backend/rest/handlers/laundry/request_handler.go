@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"ocean-paradise/backend/util" // Replace with your actual module
+	"oasis/backend/util" // Replace with your actual module
 )
 
 type ReqCreateRequest struct {

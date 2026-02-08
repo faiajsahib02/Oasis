@@ -1,6 +1,6 @@
 package room
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 type Service interface {
 	Create(room domain.Room) (*domain.Room, error)

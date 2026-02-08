@@ -11,3 +11,4 @@ type Guest struct {
 	CheckOutDate time.Time `json:"check_out_date" db:"check_out_date"`
 	CreatedAt    time.Time `json:"created_at" db:"created_at"`
 }
+

@@ -3,7 +3,7 @@ package invoice
 import (
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // POST /invoice/checkout
@@ -40,3 +40,4 @@ func (h *Handler) Checkout(w http.ResponseWriter, r *http.Request) {
 
 	util.SendData(w, http.StatusOK, inv)
 }
+

@@ -6,15 +6,15 @@ import (
 	"os"
 	"strconv"
 
-	"ocean-paradise/backend/config"
-	"ocean-paradise/backend/rest/handlers/guest"
-	"ocean-paradise/backend/rest/handlers/housekeeping"
-	"ocean-paradise/backend/rest/handlers/invoice"
-	"ocean-paradise/backend/rest/handlers/laundry"
-	"ocean-paradise/backend/rest/handlers/restaurant"
-	"ocean-paradise/backend/rest/handlers/room"
-	"ocean-paradise/backend/rest/handlers/staff"
-	middleware "ocean-paradise/backend/rest/middlewares"
+	"oasis/backend/config"
+	"oasis/backend/rest/handlers/guest"
+	"oasis/backend/rest/handlers/housekeeping"
+	"oasis/backend/rest/handlers/invoice"
+	"oasis/backend/rest/handlers/laundry"
+	"oasis/backend/rest/handlers/restaurant"
+	"oasis/backend/rest/handlers/room"
+	"oasis/backend/rest/handlers/staff"
+	middleware "oasis/backend/rest/middlewares"
 )
 
 type Server struct {
@@ -83,3 +83,4 @@ func (server *Server) Start() {
 		os.Exit(1)
 	}
 }
+

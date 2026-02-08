@@ -1,6 +1,6 @@
 package invoice
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // Service defines the methods the Handler needs from the Business Logic layer.
 type Service interface {
@@ -9,3 +9,4 @@ type Service interface {
 	ProcessCheckout(guestID int) (*domain.Invoice, error)
 	ProcessCheckoutByRoom(roomNumber string) (*domain.Invoice, error)
 }
+

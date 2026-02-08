@@ -1,6 +1,6 @@
 package middleware
 
-import "ocean-paradise/backend/config"
+import "oasis/backend/config"
 
 type Middlewares struct {
 	cnf *config.Config

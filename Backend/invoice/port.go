@@ -1,6 +1,6 @@
 package invoice
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // Service Port (Inbound)
 // This is what the API Handler calls
@@ -20,3 +20,4 @@ type Repository interface {
 	// The Transactional Save
 	CreateInvoiceTx(inv *domain.Invoice) error
 }
+

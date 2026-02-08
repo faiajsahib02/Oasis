@@ -1,7 +1,7 @@
 package restaurant
 
 import (
-	middleware "ocean-paradise/backend/rest/middlewares"
+	middleware "oasis/backend/rest/middlewares"
 )
 
 type Handler struct {
@@ -15,3 +15,4 @@ func NewHandler(middlewares *middleware.Middlewares, svc Service) *Handler {
 		svc:         svc,
 	}
 }
+

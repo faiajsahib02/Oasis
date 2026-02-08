@@ -3,7 +3,7 @@ package housekeeping
 import (
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // PATCH /housekeeping/rooms/{room}/clean
@@ -16,3 +16,4 @@ func (h *Handler) MarkClean(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, "Room Marked Clean")
 }
+

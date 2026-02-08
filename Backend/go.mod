@@ -1,4 +1,4 @@
-module ocean-paradise/backend
+module oasis/backend
 
 go 1.22
 

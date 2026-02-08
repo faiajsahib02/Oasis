@@ -149,7 +149,7 @@ This is the initial release (v1.0), so there are no previous versions to compare
 For users upgrading from beta/development versions:
 
 1. Back up your database
-2. Pull the latest code: `git clone https://github.com/yourusername/ocean-paradise.git`
+2. Pull the latest code: `git clone https://github.com/yourusername/oasis.git`
 3. Run migrations: `go run main.go migrate`
 4. Restart the application
 
@@ -160,8 +160,8 @@ For users upgrading from beta/development versions:
 ### Getting Help
 - 📖 Check the [documentation](README.md)
 - 📋 Review [API documentation](Backend/README.md)
-- 🐛 Report bugs via [GitHub Issues](https://github.com/yourusername/ocean-paradise/issues)
-- 💬 Discuss in [GitHub Discussions](https://github.com/yourusername/ocean-paradise/discussions)
+- 🐛 Report bugs via [GitHub Issues](https://github.com/yourusername/oasis/issues)
+- 💬 Discuss in [GitHub Discussions](https://github.com/yourusername/oasis/discussions)
 
 ### Reporting Issues
 - For bugs: Use the [bug report template](.github/ISSUE_TEMPLATE/bug_report.md)

@@ -29,3 +29,4 @@ type RoomsStatus struct {
 	RoomNumber string `json:"room_number" db:"room_number"`
 	Status     string `json:"status" db:"housekeeping_status"` // CLEAN, DIRTY, REQUESTED_CLEANING
 }
+

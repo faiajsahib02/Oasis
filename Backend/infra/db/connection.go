@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 
-	"ocean-paradise/backend/config"
+	"oasis/backend/config"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
@@ -38,3 +38,4 @@ func NewConnection(cnf *config.DBConfig) (*sqlx.DB, error) {
 	return dbCon, nil
 
 }
+

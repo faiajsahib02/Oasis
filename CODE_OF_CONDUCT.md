@@ -2,7 +2,7 @@
 
 ## Our Commitment
 
-We are committed to providing a welcoming and inspiring community for all. We pledge that everyone participating in the Ocean Paradise community and its projects will experience an environment that is free from discrimination and harassment.
+We are committed to providing a welcoming and inspiring community for all. We pledge that everyone participating in the Oasis community and its projects will experience an environment that is free from discrimination and harassment.
 
 ## Our Standards
 

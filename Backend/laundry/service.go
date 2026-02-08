@@ -1,7 +1,7 @@
 package laundry
 
 import (
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 	"time"
 )
 
@@ -85,3 +85,4 @@ func (s *service) AddItemsToRequest(reqID int, items []domain.AddItemInput) erro
 func (s *service) UpdateStatus(reqID int, status string) error {
 	return s.lndryRepo.UpdateStatus(reqID, status)
 }
+

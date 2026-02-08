@@ -2,7 +2,7 @@ package restaurant
 
 import (
 	"net/http"
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 	"strconv"
 )
 
@@ -19,3 +19,4 @@ func (h *Handler) UpdateStatus(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, "Status Updated")
 }
+

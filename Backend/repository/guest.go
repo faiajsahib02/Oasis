@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/guest"
+	"oasis/backend/domain"
+	"oasis/backend/guest"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -126,3 +126,4 @@ func (r *guestRepo) FindByRoomNumber(roomNumber string) (*domain.Guest, error) {
 
 	return &g, nil
 }
+

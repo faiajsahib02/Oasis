@@ -1,7 +1,7 @@
 package guest
 
 import (
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 	"net/http"
 	"strconv"
 )

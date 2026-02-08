@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // PATCH /housekeeping/amenities/{id}/deliver
@@ -42,3 +42,4 @@ func (h *Handler) ResolveTicket(w http.ResponseWriter, r *http.Request) {
 
 	util.SendData(w, 200, map[string]string{"message": "Ticket resolved"})
 }
+

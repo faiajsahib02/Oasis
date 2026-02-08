@@ -4,27 +4,27 @@ import (
 	"fmt"
 	"os"
 
-	"ocean-paradise/backend/config"
-	"ocean-paradise/backend/guest"
-	"ocean-paradise/backend/housekeeping"
-	"ocean-paradise/backend/infra/db"
-	"ocean-paradise/backend/invoice"
-	"ocean-paradise/backend/laundry"
-	"ocean-paradise/backend/repository"
-	"ocean-paradise/backend/rest"
-	"ocean-paradise/backend/restaurant"
-	"ocean-paradise/backend/room"
-	"ocean-paradise/backend/staff"
-	"ocean-paradise/backend/ws"
+	"oasis/backend/config"
+	"oasis/backend/guest"
+	"oasis/backend/housekeeping"
+	"oasis/backend/infra/db"
+	"oasis/backend/invoice"
+	"oasis/backend/laundry"
+	"oasis/backend/repository"
+	"oasis/backend/rest"
+	"oasis/backend/restaurant"
+	"oasis/backend/room"
+	"oasis/backend/staff"
+	"oasis/backend/ws"
 
-	guesthandler "ocean-paradise/backend/rest/handlers/guest"
-	housekeepinghandler "ocean-paradise/backend/rest/handlers/housekeeping"
-	invoicehandler "ocean-paradise/backend/rest/handlers/invoice"
-	laundryhandler "ocean-paradise/backend/rest/handlers/laundry"
-	restauranthandler "ocean-paradise/backend/rest/handlers/restaurant"
-	roomhandler "ocean-paradise/backend/rest/handlers/room"
-	staffhandler "ocean-paradise/backend/rest/handlers/staff"
-	middleware "ocean-paradise/backend/rest/middlewares"
+	guesthandler "oasis/backend/rest/handlers/guest"
+	housekeepinghandler "oasis/backend/rest/handlers/housekeeping"
+	invoicehandler "oasis/backend/rest/handlers/invoice"
+	laundryhandler "oasis/backend/rest/handlers/laundry"
+	restauranthandler "oasis/backend/rest/handlers/restaurant"
+	roomhandler "oasis/backend/rest/handlers/room"
+	staffhandler "oasis/backend/rest/handlers/staff"
+	middleware "oasis/backend/rest/middlewares"
 )
 
 func Serve() {
@@ -95,3 +95,4 @@ func Serve() {
 
 	server.Start()
 }
+

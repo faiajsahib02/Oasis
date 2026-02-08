@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 type ReqLogin struct {
@@ -46,3 +46,4 @@ func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
 
 	util.SendData(w, http.StatusOK, accessToken)
 }
+

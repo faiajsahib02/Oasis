@@ -1,6 +1,6 @@
 package restaurant
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 type Service interface {
 	// --- GUEST FEATURES ---
@@ -29,3 +29,4 @@ type Service interface {
 	UpdateMenuItem(item *domain.RestaurantMenuItem) error
 	RemoveMenuItem(id int) error
 }
+

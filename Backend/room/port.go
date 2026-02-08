@@ -1,8 +1,8 @@
 package room
 
 import (
-	"ocean-paradise/backend/domain"
-	roomHandler "ocean-paradise/backend/rest/handlers/room"
+	"oasis/backend/domain"
+	roomHandler "oasis/backend/rest/handlers/room"
 )
 
 // Service defines what the "Room Module" is capable of doing.

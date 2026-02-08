@@ -3,8 +3,8 @@ package restaurant
 import (
 	"encoding/json"
 	"net/http"
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/util"
+	"oasis/backend/domain"
+	"oasis/backend/util"
 	"strconv"
 )
 
@@ -27,3 +27,4 @@ func (h *Handler) UpdateItem(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, "Item Updated")
 }
+

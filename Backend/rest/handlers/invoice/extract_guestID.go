@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // Helper to extract Guest ID from JWT token
@@ -17,3 +17,4 @@ func (h *Handler) extractGuestID(r *http.Request) (int, error) {
 	}
 	return claims.Sub, nil
 }
+

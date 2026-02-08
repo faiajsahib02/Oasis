@@ -2,7 +2,7 @@ package housekeeping
 
 import (
 	"net/http"
-	middleware "ocean-paradise/backend/rest/middlewares"
+	middleware "oasis/backend/rest/middlewares"
 )
 
 func (h *Handler) RegisterRoutes(mux *http.ServeMux, manager *middleware.Manager) {
@@ -22,3 +22,4 @@ func (h *Handler) RegisterRoutes(mux *http.ServeMux, manager *middleware.Manager
 	mux.Handle("PATCH /housekeeping/amenities/{id}/deliver", manager.With(http.HandlerFunc(h.MarkAmenityDelivered)))
 	mux.Handle("PATCH /housekeeping/tickets/{id}/resolve", manager.With(http.HandlerFunc(h.ResolveTicket)))
 }
+

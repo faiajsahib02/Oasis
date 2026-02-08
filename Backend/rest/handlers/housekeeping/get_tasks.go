@@ -3,7 +3,7 @@ package housekeeping
 import (
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // GET /housekeeping/amenities
@@ -25,3 +25,4 @@ func (h *Handler) GetMaintenanceTickets(w http.ResponseWriter, r *http.Request) 
 	}
 	util.SendData(w, 200, tickets)
 }
+

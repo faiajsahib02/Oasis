@@ -1,6 +1,6 @@
 package guest
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // service implements the Service interface defined in port.go
 type service struct {
@@ -57,3 +57,4 @@ func (svc *service) GetByRoomNumber(roomNumber string) (*domain.Guest, error) {
 	}
 	return gst, nil
 }
+

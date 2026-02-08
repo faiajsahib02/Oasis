@@ -14,7 +14,7 @@ We take security seriously and appreciate the open source community's efforts to
 
 **Do not** open a public GitHub issue for security vulnerabilities. Instead, please follow these steps:
 
-1. **Email** security@ocean-paradise.dev with the subject line starting with `[SECURITY]`
+1. **Email** security@oasis.dev with the subject line starting with `[SECURITY]`
 2. **Include** detailed information about the vulnerability:
    - Type of vulnerability
    - Location in codebase (if known)
@@ -86,6 +86,6 @@ This project aims to follow security best practices outlined by:
 
 ## Contact
 
-For security concerns, please contact the maintainers at: **security@ocean-paradise.dev**
+For security concerns, please contact the maintainers at: **security@oasis.dev**
 
-Thank you for helping keep Ocean Paradise secure! 🔒
+Thank you for helping keep Oasis secure! 🔒

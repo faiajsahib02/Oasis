@@ -1,6 +1,6 @@
-# Ocean Paradise - Project Roadmap
+# Oasis - Project Roadmap
 
-This roadmap outlines the planned features, improvements, and milestones for the Ocean Paradise Hotel Management System.
+This roadmap outlines the planned features, improvements, and milestones for the Oasis Hotel Management System.
 
 ## 🎯 Vision
 
@@ -192,7 +192,7 @@ We welcome community contributions! Areas where help is needed:
 
 ### How to Help
 
-1. Check [GitHub Issues](https://github.com/yourusername/ocean-paradise/issues) for open tasks
+1. Check [GitHub Issues](https://github.com/yourusername/oasis/issues) for open tasks
 2. Look for issues tagged with:
    - `good first issue` - Perfect for newcomers
    - `help wanted` - Community help appreciated

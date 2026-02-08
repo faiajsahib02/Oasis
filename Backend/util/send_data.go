@@ -19,3 +19,4 @@ func SendError(w http.ResponseWriter, statusCode int, msg string) {
 	ecoder := json.NewEncoder(w)
 	ecoder.Encode(map[string]string{"error": msg})
 }
+

@@ -44,3 +44,4 @@ func (mngr *Manager) WrapMux(handler http.Handler) http.Handler {
 	return h
 
 }
+

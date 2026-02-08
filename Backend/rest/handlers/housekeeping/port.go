@@ -3,7 +3,7 @@ package housekeeping
 import (
 	"net/http"
 
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 )
 
 // Service defines the methods the Handler needs from the Business Logic layer.
@@ -26,3 +26,4 @@ type Service interface {
 type WebSocketHub interface {
 	ServeWs(w http.ResponseWriter, r *http.Request)
 }
+

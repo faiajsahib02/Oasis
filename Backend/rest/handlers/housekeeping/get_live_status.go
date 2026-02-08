@@ -3,7 +3,7 @@ package housekeeping
 import (
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // GET /housekeeping/live
@@ -16,3 +16,4 @@ func (h *Handler) GetLiveStatus(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, statuses)
 }
+

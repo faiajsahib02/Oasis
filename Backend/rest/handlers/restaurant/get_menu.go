@@ -2,7 +2,7 @@ package restaurant
 
 import (
 	"net/http"
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // GET /restaurant/menu
@@ -14,3 +14,4 @@ func (h *Handler) GetMenu(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, menu)
 }
+

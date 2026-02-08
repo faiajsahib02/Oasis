@@ -2,11 +2,11 @@ package invoice
 
 import (
 	"errors"
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/guest"
-	"ocean-paradise/backend/laundry"
-	"ocean-paradise/backend/restaurant"
-	"ocean-paradise/backend/room"
+	"oasis/backend/domain"
+	"oasis/backend/guest"
+	"oasis/backend/laundry"
+	"oasis/backend/restaurant"
+	"oasis/backend/room"
 )
 
 type service struct {
@@ -126,3 +126,4 @@ func (s *service) ProcessCheckoutByRoom(roomNumber string) (*domain.Invoice, err
 	}
 	return s.ProcessCheckout(gst.ID)
 }
+

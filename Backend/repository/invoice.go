@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 	"github.com/jmoiron/sqlx"
 )
 

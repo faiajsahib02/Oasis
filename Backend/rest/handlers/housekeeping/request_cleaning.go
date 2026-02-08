@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // POST /housekeeping/clean
@@ -32,3 +32,4 @@ func (h *Handler) RequestCleaning(w http.ResponseWriter, r *http.Request) {
 	}
 	util.SendData(w, 200, "Room status updated")
 }
+

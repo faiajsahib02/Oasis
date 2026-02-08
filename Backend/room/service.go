@@ -1,7 +1,7 @@
 package room
 
 import (
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 )
 
 // service implements the Service interface defined in port.go

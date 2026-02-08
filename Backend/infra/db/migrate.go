@@ -20,3 +20,4 @@ func MigrateDB(dbCon *sqlx.DB, dir string) error {
 	fmt.Println("Database migrated successfully")
 	return nil
 }
+

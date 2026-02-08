@@ -86,3 +86,4 @@ func (h *Hub) BroadcastToStaff(msgType string, data interface{}) {
 func (h *Hub) ServeWs(w http.ResponseWriter, r *http.Request) {
 	ServeWs(h, w, r)
 }
+

@@ -1,8 +1,8 @@
 package room
 
 import (
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/util"
+	"oasis/backend/domain"
+	"oasis/backend/util"
 	"net/http"
 )
 

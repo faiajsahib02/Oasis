@@ -1,6 +1,6 @@
 package guest
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // Service defines the methods the Handler needs from the Business Logic layer.
 type Service interface {
@@ -9,3 +9,4 @@ type Service interface {
 	Get(id int) (*domain.Guest, error)
 	GetByRoomNumber(roomNumber string) (*domain.Guest, error)
 }
+

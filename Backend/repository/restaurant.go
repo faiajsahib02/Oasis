@@ -2,8 +2,8 @@ package repository
 
 import (
 	"database/sql"
-	"ocean-paradise/backend/domain" // Replace with your path
-	"ocean-paradise/backend/restaurant"
+	"oasis/backend/domain" // Replace with your path
+	"oasis/backend/restaurant"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -159,3 +159,4 @@ func (r *restaurantRepo) FetchActiveOrders() ([]domain.OrderWithItems, error) {
 
 	return result, nil
 }
+

@@ -9,3 +9,4 @@ import (
 func (h *Handler) ServeWebSocket(w http.ResponseWriter, r *http.Request) {
 	h.hub.ServeWs(w, r)
 }
+

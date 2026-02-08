@@ -1,6 +1,6 @@
 package restaurant
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // Service Port
 type Service interface {
@@ -26,3 +26,4 @@ type Repository interface {
 	UpdateItem(item *domain.RestaurantMenuItem) error
 	DeleteItem(id int) error
 }
+

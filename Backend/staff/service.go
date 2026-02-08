@@ -2,8 +2,8 @@ package staff
 
 import (
 	"errors"
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/util" // Replace with your path
+	"oasis/backend/domain"
+	"oasis/backend/util" // Replace with your path
 )
 
 type service struct {
@@ -48,3 +48,4 @@ func (s *service) Login(staffID int, password string) (*domain.Staff, string, er
 
 	return staff, token, nil
 }
+

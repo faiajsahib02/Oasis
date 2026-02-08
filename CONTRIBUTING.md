@@ -1,6 +1,6 @@
-# Contributing to Ocean Paradise
+# Contributing to Oasis
 
-First off, thank you for considering contributing to Ocean Paradise! It's people like you that make this project a great learning resource and useful tool.
+First off, thank you for considering contributing to Oasis! It's people like you that make this project a great learning resource and useful tool.
 
 ## 📋 Table of Contents
 
@@ -29,8 +29,8 @@ This project and everyone participating in it is governed by a commitment to pro
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally
    ```bash
-   git clone https://github.com/your-username/ocean-paradise.git
-   cd ocean-paradise
+   git clone https://github.com/your-username/oasis.git
+   cd oasis
    ```
 3. **Set up the development environment**
    - Follow the setup instructions in [README.md](README.md)

@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/housekeeping"
+	"oasis/backend/domain"
+	"oasis/backend/housekeeping"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -65,3 +65,4 @@ func (r *hkRepo) UpdateTicketStatus(id int, status string) error {
 	_, err := r.db.Exec("UPDATE maintenance_tickets SET status = $1 WHERE id = $2", status, id)
 	return err
 }
+

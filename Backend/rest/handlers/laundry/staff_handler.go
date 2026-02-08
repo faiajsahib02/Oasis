@@ -3,8 +3,8 @@ package laundry
 import (
 	"encoding/json"
 	"net/http"
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/util"
+	"oasis/backend/domain"
+	"oasis/backend/util"
 	"strconv"
 )
 

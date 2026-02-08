@@ -1,7 +1,7 @@
 package laundry
 
 import (
-	"ocean-paradise/backend/domain" // Import your domain logic
+	"oasis/backend/domain" // Import your domain logic
 )
 
 type Service interface {
@@ -12,3 +12,4 @@ type Service interface {
 	UpdateStatus(reqID int, status string) error
 	AddItemsToRequest(reqID int, items []domain.AddItemInput) error
 }
+

@@ -2,9 +2,9 @@ package repository
 
 import (
 	"database/sql"
-	"ocean-paradise/backend/staff" // Replace with your path
+	"oasis/backend/staff" // Replace with your path
 	"github.com/jmoiron/sqlx"
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 )
 
 type StaffRepo interface {

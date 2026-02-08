@@ -1,6 +1,6 @@
 package staff
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 
 

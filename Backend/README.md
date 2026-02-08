@@ -1,6 +1,6 @@
-# 🔧 Ocean Paradise Backend
+# 🔧 Oasis Backend
 
-The backend service for Ocean Paradise Hotel Management System, built with Go using hexagonal architecture principles.
+The backend service for Oasis Hotel Management System, built with Go using hexagonal architecture principles.
 
 ## 📋 Table of Contents
 
@@ -161,7 +161,7 @@ Backend/
    DB_PORT=5432
    DB_USER=postgres
    DB_PASSWORD=your_password
-   DB_NAME=ocean_paradise
+   DB_NAME=oasis
    DB_SSLMODE=disable
 
    # Server Configuration
@@ -181,7 +181,7 @@ Backend/
 
 3. **Create database**
    ```bash
-   createdb ocean_paradise
+   createdb oasis
    ```
 
 4. **Run migrations**
@@ -210,10 +210,10 @@ air
 go test ./...
 
 # Build binary
-go build -o bin/ocean-paradise
+go build -o bin/oasis
 
 # Run binary
-./bin/ocean-paradise
+./bin/oasis
 ```
 
 ## 🗄️ Database Schema
@@ -382,7 +382,7 @@ Connect to WebSocket at: `ws://localhost:8080/ws`
 | `DB_PORT` | PostgreSQL port | 5432 |
 | `DB_USER` | Database user | postgres |
 | `DB_PASSWORD` | Database password | - |
-| `DB_NAME` | Database name | ocean_paradise |
+| `DB_NAME` | Database name | oasis |
 | `DB_SSLMODE` | SSL mode | disable |
 | `PORT` | Server port | 8080 |
 | `JWT_SECRET` | JWT signing key | - |
@@ -421,13 +421,13 @@ go test -v ./...
 
 ```bash
 # Build binary
-CGO_ENABLED=0 GOOS=linux go build -o ocean-paradise
+CGO_ENABLED=0 GOOS=linux go build -o oasis
 
 # Run migrations in production
-./ocean-paradise migrate
+./oasis migrate
 
 # Start server
-./ocean-paradise
+./oasis
 ```
 
 ### Docker (Optional)
@@ -443,10 +443,10 @@ RUN CGO_ENABLED=0 go build -o ocean-paradise
 FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
-COPY --from=builder /app/ocean-paradise .
+COPY --from=builder /app/oasis .
 COPY --from=builder /app/migrations ./migrations
 EXPOSE 8080
-CMD ["./ocean-paradise"]
+CMD ["./oasis"]
 ```
 
 ## 📚 Additional Resources

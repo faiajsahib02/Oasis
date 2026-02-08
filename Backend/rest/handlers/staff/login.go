@@ -5,9 +5,9 @@ package staff
 import (
 	"encoding/json"
 	"net/http"
-	"ocean-paradise/backend/config"
-	"ocean-paradise/backend/staff"
-	"ocean-paradise/backend/util"
+	"oasis/backend/config"
+	"oasis/backend/staff"
+	"oasis/backend/util"
 )
 
 type Handler struct {

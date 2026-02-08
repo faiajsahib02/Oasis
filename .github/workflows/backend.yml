@@ -21,7 +21,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: ocean_paradise_test
+          POSTGRES_DB: oasis_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -57,7 +57,7 @@ jobs:
         DB_PORT: 5432
         DB_USER: postgres
         DB_PASSWORD: postgres
-        DB_NAME: ocean_paradise_test
+        DB_NAME: oasis_test
         JWT_SECRET: test_secret
       run: go test -v -race -coverprofile=coverage.out ./...
 
@@ -101,13 +101,13 @@ jobs:
     - name: Build
       working-directory: ./Backend
       run: |
-        CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ocean-paradise .
-        CGO_ENABLED=0 GOOS=darwin go build -a -installsuffix cgo -o ocean-paradise-macos .
-        CGO_ENABLED=0 GOOS=windows go build -a -installsuffix cgo -o ocean-paradise.exe .
+        CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o oasis .
+        CGO_ENABLED=0 GOOS=darwin go build -a -installsuffix cgo -o oasis-macos .
+        CGO_ENABLED=0 GOOS=windows go build -a -installsuffix cgo -o oasis.exe .
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: backend-binaries
-        path: Backend/ocean-paradise*
+        path: Backend/oasis*
         retention-days: 30

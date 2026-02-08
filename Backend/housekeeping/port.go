@@ -1,6 +1,6 @@
 package housekeeping
 
-import "ocean-paradise/backend/domain"
+import "oasis/backend/domain"
 
 // Service Interface
 type Service interface {
@@ -29,3 +29,4 @@ type Repository interface {
 	UpdateAmenityStatus(id int, status string) error
 	UpdateTicketStatus(id int, status string) error
 }
+

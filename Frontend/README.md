@@ -1,6 +1,6 @@
-# 🎨 Ocean Paradise Frontend
+# 🎨 Oasis Frontend
 
-Modern, responsive React frontend for the Ocean Paradise Hotel Management System with TypeScript and Tailwind CSS.
+Modern, responsive React frontend for the Oasis Hotel Management System with TypeScript and Tailwind CSS.
 
 ## 📋 Table of Contents
 

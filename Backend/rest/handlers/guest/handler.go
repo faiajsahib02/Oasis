@@ -1,7 +1,7 @@
 package guest
 
 import (
-	"ocean-paradise/backend/config"
+	"oasis/backend/config"
 )
 
 type Handler struct {
@@ -17,3 +17,4 @@ func NewHandler(cnf *config.Config, svc Service) *Handler {
 		svc: svc,
 	}
 }
+

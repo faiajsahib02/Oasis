@@ -1,8 +1,8 @@
 package housekeeping
 
 import (
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/ws" // Import the WebSocket package
+	"oasis/backend/domain"
+	"oasis/backend/ws" // Import the WebSocket package
 	"time"
 )
 
@@ -109,3 +109,4 @@ func (s *service) MarkAmenityDelivered(id int) error {
 func (s *service) ResolveTicket(id int) error {
 	return s.repo.UpdateTicketStatus(id, "RESOLVED")
 }
+

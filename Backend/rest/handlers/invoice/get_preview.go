@@ -3,7 +3,7 @@ package invoice
 import (
 	"net/http"
 
-	"ocean-paradise/backend/util"
+	"oasis/backend/util"
 )
 
 // GET /invoice/preview
@@ -40,3 +40,4 @@ func (h *Handler) GetPreview(w http.ResponseWriter, r *http.Request) {
 
 	util.SendData(w, http.StatusOK, preview)
 }
+

@@ -1,7 +1,7 @@
 package restaurant
 
 import (
-	"ocean-paradise/backend/domain"
+	"oasis/backend/domain"
 	"time"
 )
 
@@ -87,3 +87,4 @@ func (s *service) RemoveMenuItem(id int) error {
 func (s *service) GetKitchenOrders() ([]domain.OrderWithItems, error) {
 	return s.repo.FetchActiveOrders()
 }
+

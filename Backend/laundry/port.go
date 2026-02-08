@@ -1,7 +1,7 @@
 package laundry
 
-import ("ocean-paradise/backend/domain"
- laundryHandler "ocean-paradise/backend/rest/handlers/laundry"
+import ("oasis/backend/domain"
+ laundryHandler "oasis/backend/rest/handlers/laundry"
 )
 
 // Service Port (Inbound)
@@ -18,3 +18,4 @@ type LaundryRepo interface {
 	UpdateStatus(reqID int, status string) error
 	GetAllRequests() ([]domain.ServiceRequest, error)
 }
+

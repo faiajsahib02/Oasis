@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/util"
+	"oasis/backend/domain"
+	"oasis/backend/util"
 )
 
 // ReqCreateGuest defines the JSON payload sent by the Front Desk staff
@@ -78,3 +78,4 @@ func (h *Handler) CreateGuest(w http.ResponseWriter, r *http.Request) {
 
 	util.SendData(w, http.StatusCreated, gst)
 }
+

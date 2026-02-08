@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/room"
+	"oasis/backend/domain"
+	"oasis/backend/room"
 
 	"github.com/jmoiron/sqlx"
 )

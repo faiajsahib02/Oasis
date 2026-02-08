@@ -1,8 +1,8 @@
 package guest
 
 import (
-	"ocean-paradise/backend/domain"
-	guestHandler "ocean-paradise/backend/rest/handlers/guest"
+	"oasis/backend/domain"
+	guestHandler "oasis/backend/rest/handlers/guest"
 )
 
 // Service defines what the "Guest Module" is capable of doing.
@@ -19,3 +19,4 @@ type GuestRepo interface {
 	FindByID(id int) (*domain.Guest, error)
 	FindByRoomNumber(roomNumber string) (*domain.Guest, error)
 }
+

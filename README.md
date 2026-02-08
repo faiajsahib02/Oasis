@@ -1,4 +1,4 @@
-# 🏨 Ocean Paradise - Hotel Management System
+# 🏨 Oasis - Hotel Management System
 
 A comprehensive, full-stack hotel management system built with Go and React, featuring real-time updates, role-based access control, and complete hotel operations management.
 
@@ -6,12 +6,12 @@ A comprehensive, full-stack hotel management system built with Go and React, fea
 ![Go Version](https://img.shields.io/badge/Go-1.22-00ADD8?logo=go)
 ![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript)
-![Backend CI/CD](https://github.com/yourusername/ocean-paradise/actions/workflows/backend.yml/badge.svg)
-![Frontend CI/CD](https://github.com/yourusername/ocean-paradise/actions/workflows/frontend.yml/badge.svg)
+![Backend CI/CD](https://github.com/yourusername/oasis/actions/workflows/backend.yml/badge.svg)
+![Frontend CI/CD](https://github.com/yourusername/oasis/actions/workflows/frontend.yml/badge.svg)
 ![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
-![GitHub Stars](https://img.shields.io/github/stars/yourusername/ocean-paradise?style=social)
-![GitHub Forks](https://img.shields.io/github/forks/yourusername/ocean-paradise?style=social)
+![GitHub Stars](https://img.shields.io/github/stars/yourusername/oasis?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/yourusername/oasis?style=social)
 
 ## 📋 Table of Contents
 
@@ -30,7 +30,7 @@ A comprehensive, full-stack hotel management system built with Go and React, fea
 
 ## 🌟 Overview
 
-Ocean Paradise is a modern hotel management system designed to streamline hotel operations, from guest management and room bookings to housekeeping, laundry services, and restaurant operations. The system implements a clean architecture pattern with hexagonal design principles, ensuring maintainability and scalability.
+Oasis is a modern hotel management system designed to streamline hotel operations, from guest management and room bookings to housekeeping, laundry services, and restaurant operations. The system implements a clean architecture pattern with hexagonal design principles, ensuring maintainability and scalability.
 
 **Key Highlights:**
 - Real-time updates using WebSocket connections
@@ -154,8 +154,8 @@ Ocean Paradise is a modern hotel management system designed to streamline hotel 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ocean-paradise.git
-   cd ocean-paradise/Backend
+   git clone https://github.com/yourusername/oasis.git
+   cd oasis/Backend
    ```
 
 2. **Install dependencies**
@@ -171,7 +171,7 @@ Ocean Paradise is a modern hotel management system designed to streamline hotel 
    DB_PORT=5432
    DB_USER=your_db_user
    DB_PASSWORD=your_db_password
-   DB_NAME=ocean_paradise
+   DB_NAME=oasis
    JWT_SECRET=your_jwt_secret_key
    PORT=8080
    ```
@@ -355,8 +355,8 @@ Get up and running in minutes:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ocean-paradise.git
-cd ocean-paradise
+git clone https://github.com/yourusername/oasis.git
+cd oasis
 
 # Backend setup
 cd Backend

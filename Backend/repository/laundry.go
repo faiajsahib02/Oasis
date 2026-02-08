@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"ocean-paradise/backend/domain"
-	"ocean-paradise/backend/laundry"
+	"oasis/backend/domain"
+	"oasis/backend/laundry"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -112,3 +112,4 @@ func (r *laundryRepo) GetAllRequests() ([]domain.ServiceRequest, error) {
 	err := r.db.Select(&requests, query)
 	return requests, err
 }
+

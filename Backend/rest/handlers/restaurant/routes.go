@@ -1,7 +1,7 @@
 package restaurant
 
 import (
-	middleware "ocean-paradise/backend/rest/middlewares"
+	middleware "oasis/backend/rest/middlewares"
 	"net/http"
 )
 

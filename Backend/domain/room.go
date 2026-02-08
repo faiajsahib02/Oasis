@@ -15,3 +15,4 @@ type Room struct {
 	Status     RoomStatus `json:"status" db:"status"`
 	Price      float64    `json:"price" db:"price"`
 }
+
