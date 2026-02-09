@@ -106,7 +106,7 @@ jobs:
         CGO_ENABLED=0 GOOS=windows go build -a -installsuffix cgo -o oasis.exe .
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v6
       with:
         name: backend-binaries
         path: Backend/oasis*
