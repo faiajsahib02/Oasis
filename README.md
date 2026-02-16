@@ -1,4 +1,4 @@
-# 🏨 Oasis - Hotel Management System
+# Oasis - Hotel Management System
 
 A production-grade, full-stack hotel management system demonstrating professional software architecture, design patterns, and enterprise-level development practices. Built with **Go** (Hexagonal/Clean Architecture) and **React** with **TypeScript**, featuring real-time WebSocket updates, role-based access control, and complete hotel operations management.
 
