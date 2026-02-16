@@ -156,6 +156,13 @@ Oasis is a **production-grade hotel management system** showcasing professional 
 - Payment processing
 - Invoice history
 
+### 🤖 RAG (Retrieval-Augmented Generation)
+- AI-powered guest assistance & information retrieval
+- OpenAI GPT integration
+- Real-time concierge chatbot
+- Context-aware response generation
+- Natural language processing for guest queries
+
 ## 🛠️ Tech Stack
 
 ### Backend (Go 1.22)
@@ -168,6 +175,7 @@ Oasis is a **production-grade hotel management system** showcasing professional 
 | **sql-migrate** | Schema Versioning | Version-controlled database migrations |
 | **godotenv** | Configuration | Environment variable management |
 | **Custom JWT** | Authentication | HMAC-SHA256 token generation & verification |
+| **OpenAI API** | AI Integration | GPT-powered RAG for guest assistance |
 
 ### Frontend (React 18.3)
 | Technology | Purpose | Key Features |
