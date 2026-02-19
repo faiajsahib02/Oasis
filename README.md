@@ -1,4 +1,4 @@
-# Oasis — Hotel Management System
+# Oasis — Distributed Hotel Operations System
 
 A full-stack hotel management system built with **Go** and **React + TypeScript**, designed around **Hexagonal Architecture**, **Domain-Driven Design**, and **SOLID principles**. The codebase is intentionally structured to demonstrate clean software engineering practices: loose coupling, dependency injection, and clear separation of concerns across every layer.
 
